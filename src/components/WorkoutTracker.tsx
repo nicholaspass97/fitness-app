@@ -79,7 +79,7 @@ const WorkoutTracker = ({ workouts, onDeleteWorkout }: WorkoutTrackerProps) => {
                       {workout.exercises.slice(0, 3).map((exercise, index) => (
                         <p key={index} className="text-sm text-gray-700">
                           {exercise.name} - {exercise.sets} sets × {exercise.reps} reps
-                          {exercise.weight && ` @ ${exercise.weight}kg`}
+                          {exercise.weight && exercise.weight > 0 && ` @ ${exercise.weight}kg`}
                         </p>
                       ))}
                       {workout.exercises.length > 3 && (
