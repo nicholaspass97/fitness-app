@@ -11,11 +11,6 @@
   
   body {
     @apply text-gray-900;
-    background-image: url('/gym-background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
   }
 
   /* Custom scrollbar */

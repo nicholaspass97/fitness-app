@@ -4,6 +4,7 @@ import WorkoutCategories from './components/WorkoutCategories'
 import WorkoutTracker from './components/WorkoutTracker'
 import ProgressChart from './components/ProgressChart'
 import WorkoutForm from './components/WorkoutForm'
+import gymBackground from './assets/gym-background.jpg'
 
 export interface Workout {
   id: string
@@ -79,7 +80,16 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen">
+    <div 
+      className="min-h-screen"
+      style={{
+        backgroundImage: `url(${gymBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       {/* Mobile Header */}
       <div className="glass-header px-4 py-3">
         <div className="flex items-center justify-between">
@@ -89,7 +99,7 @@ function App() {
             </div>
             <div>
               <h1 className="text-lg font-bold text-gray-900">FitnessTracker</h1>
-              <p className="text-sm text-gray-600">Ready every day</p>
+              <p className="text-sm text-gray-500">Ready every day</p>
             </div>
           </div>
           <div className="flex items-center space-x-2">
