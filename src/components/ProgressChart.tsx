@@ -5,92 +5,108 @@ interface ProgressChartProps {
 }
 
 const ProgressChart = ({ workouts }: ProgressChartProps) => {
-  const totalWorkouts = workouts.length
-  const totalCalories = workouts.reduce((sum, workout) => sum + workout.calories, 0)
-  const totalDuration = workouts.reduce((sum, workout) => sum + workout.duration, 0)
-  
-  const workoutTypes = workouts.reduce((acc, workout) => {
-    acc[workout.type] = (acc[workout.type] || 0) + 1
-    return acc
-  }, {} as Record<string, number>)
+  const getLast7Days = () => {
+    const days = []
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date()
+      date.setDate(date.getDate() - i)
+      days.push(date.toISOString().split('T')[0])
+    }
+    return days
+  }
 
-  const mostCommonType = Object.keys(workoutTypes).sort((a, b) => 
-    workoutTypes[b] - workoutTypes[a]
-  )[0]
+  const getWorkoutsByDay = () => {
+    const last7Days = getLast7Days()
+    return last7Days.map(day => {
+      const dayWorkouts = workouts.filter(w => w.date === day)
+      return {
+        date: day,
+        count: dayWorkouts.length,
+        duration: dayWorkouts.reduce((sum, w) => sum + w.duration, 0),
+        calories: dayWorkouts.reduce((sum, w) => sum + w.calories, 0)
+      }
+    })
+  }
 
-  const thisWeekWorkouts = workouts.filter(workout => {
-    const workoutDate = new Date(workout.date)
-    const weekAgo = new Date()
-    weekAgo.setDate(weekAgo.getDate() - 7)
-    return workoutDate >= weekAgo
-  }).length
+  const workoutData = getWorkoutsByDay()
+  const maxWorkouts = Math.max(...workoutData.map(d => d.count), 1)
+  const maxDuration = Math.max(...workoutData.map(d => d.duration), 1)
+
+  const formatDay = (dateString: string) => {
+    return new Date(dateString).toLocaleDateString('en-US', { weekday: 'short' })
+  }
 
   return (
-    <div className="space-y-6">
-      <h2 className="text-xl font-bold text-gray-900">Progress Overview</h2>
+    <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+      <h3 className="text-xl font-bold text-gray-900 mb-6">Weekly Progress</h3>
       
-      <div className="card">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center">
-            <p className="text-2xl font-bold text-primary-600">{totalWorkouts}</p>
-            <p className="text-sm text-gray-500">Total Workouts</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-fitness-green">{totalCalories}</p>
-            <p className="text-sm text-gray-500">Calories Burned</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-fitness-blue">{totalDuration}</p>
-            <p className="text-sm text-gray-500">Minutes</p>
-          </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-fitness-orange">{thisWeekWorkouts}</p>
-            <p className="text-sm text-gray-500">This Week</p>
-          </div>
+      {/* Summary Stats */}
+      <div className="grid grid-cols-2 gap-4 mb-6">
+        <div className="text-center">
+          <p className="text-2xl font-bold text-blue-600">
+            {workoutData.reduce((sum, d) => sum + d.count, 0)}
+          </p>
+          <p className="text-sm text-gray-600">Workouts</p>
+        </div>
+        <div className="text-center">
+          <p className="text-2xl font-bold text-green-600">
+            {workoutData.reduce((sum, d) => sum + d.duration, 0)}m
+          </p>
+          <p className="text-sm text-gray-600">Total Time</p>
         </div>
       </div>
 
-      {Object.keys(workoutTypes).length > 0 && (
-        <div className="card">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Workout Types</h3>
-          <div className="space-y-3">
-            {Object.entries(workoutTypes).map(([type, count]) => (
-              <div key={type} className="flex items-center justify-between">
-                <span className="text-sm font-medium text-gray-700 capitalize">{type}</span>
-                <div className="flex items-center space-x-2">
-                  <div className="w-16 bg-gray-200 rounded-full h-2">
-                    <div 
-                      className="bg-primary-600 h-2 rounded-full"
-                      style={{ width: `${(count / totalWorkouts) * 100}%` }}
-                    ></div>
-                  </div>
-                  <span className="text-sm text-gray-500 w-8 text-right">{count}</span>
-                </div>
+      {/* Workout Frequency Chart */}
+      <div className="mb-6">
+        <h4 className="text-sm font-semibold text-gray-700 mb-3">Workout Frequency</h4>
+        <div className="flex items-end justify-between space-x-2 h-32">
+          {workoutData.map((day, index) => (
+            <div key={index} className="flex-1 flex flex-col items-center">
+              <div className="w-full bg-gray-200 rounded-t-lg relative">
+                <div
+                  className="bg-blue-500 rounded-t-lg transition-all duration-300"
+                  style={{ height: `${(day.count / maxWorkouts) * 100}%` }}
+                ></div>
               </div>
-            ))}
-          </div>
+              <span className="text-xs text-gray-600 mt-2">{formatDay(day.date)}</span>
+            </div>
+          ))}
         </div>
-      )}
+      </div>
 
-      {totalWorkouts > 0 && (
-        <div className="card">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Stats</h3>
-          <div className="space-y-3">
-            <div className="flex justify-between">
-              <span className="text-sm text-gray-600">Average Duration</span>
-              <span className="text-sm font-medium">{Math.round(totalDuration / totalWorkouts)} min</span>
+      {/* Duration Chart */}
+      <div className="mb-6">
+        <h4 className="text-sm font-semibold text-gray-700 mb-3">Daily Duration</h4>
+        <div className="flex items-end justify-between space-x-2 h-32">
+          {workoutData.map((day, index) => (
+            <div key={index} className="flex-1 flex flex-col items-center">
+              <div className="w-full bg-gray-200 rounded-t-lg relative">
+                <div
+                  className="bg-green-500 rounded-t-lg transition-all duration-300"
+                  style={{ height: `${(day.duration / maxDuration) * 100}%` }}
+                ></div>
+              </div>
+              <span className="text-xs text-gray-600 mt-2">{formatDay(day.date)}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-sm text-gray-600">Average Calories</span>
-              <span className="text-sm font-medium">{Math.round(totalCalories / totalWorkouts)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-sm text-gray-600">Favorite Type</span>
-              <span className="text-sm font-medium capitalize">{mostCommonType}</span>
-            </div>
-          </div>
+          ))}
         </div>
-      )}
+      </div>
+
+      {/* Recent Activity */}
+      <div>
+        <h4 className="text-sm font-semibold text-gray-700 mb-3">Recent Activity</h4>
+        <div className="space-y-2">
+          {workouts.slice(0, 3).map((workout) => (
+            <div key={workout.id} className="flex items-center justify-between text-sm">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-gray-900">{workout.type}</span>
+              </div>
+              <span className="text-gray-600">{workout.duration}m</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
