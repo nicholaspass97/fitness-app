@@ -3,7 +3,6 @@ import { useState } from 'react'
 interface WorkoutCategory {
   id: string
   name: string
-  icon: string
   color: string
   exercises: Exercise[]
   description: string
@@ -20,7 +19,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'abs-circuit',
     name: 'ABS CIRCUIT',
-    icon: '🔥',
     color: 'bg-gradient-to-r from-orange-500 to-red-500',
     description: 'Core strength and definition',
     exercises: [
@@ -35,7 +33,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'abs-circuit-2',
     name: 'ABS CIRCUIT 2',
-    icon: '💪',
     color: 'bg-gradient-to-r from-purple-500 to-pink-500',
     description: 'Advanced core training',
     exercises: [
@@ -47,7 +44,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'leg-combo',
     name: 'LEG COMBO',
-    icon: '🦵',
     color: 'bg-gradient-to-r from-green-500 to-teal-500',
     description: 'Lower body power',
     exercises: [
@@ -58,7 +54,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'hamstrings',
     name: 'HAMSTRINGS',
-    icon: '🏋️',
     color: 'bg-gradient-to-r from-blue-500 to-indigo-500',
     description: 'Posterior chain strength',
     exercises: [
@@ -70,7 +65,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'glutes',
     name: 'GLUTES',
-    icon: '🍑',
     color: 'bg-gradient-to-r from-pink-500 to-rose-500',
     description: 'Glute activation & strength',
     exercises: [
@@ -83,7 +77,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'quads',
     name: 'QUADS',
-    icon: '💪',
     color: 'bg-gradient-to-r from-emerald-500 to-green-500',
     description: 'Quadriceps development',
     exercises: [
@@ -95,7 +88,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'back',
     name: 'BACK',
-    icon: '🏋️‍♂️',
     color: 'bg-gradient-to-r from-slate-600 to-gray-700',
     description: 'Back strength & posture',
     exercises: [
@@ -109,7 +101,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'biceps',
     name: 'BICEPS',
-    icon: '💪',
     color: 'bg-gradient-to-r from-red-500 to-pink-500',
     description: 'Arm strength & definition',
     exercises: [
@@ -123,7 +114,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'triceps',
     name: 'TRICEPS',
-    icon: '💪',
     color: 'bg-gradient-to-r from-purple-600 to-indigo-600',
     description: 'Tricep development',
     exercises: [
@@ -138,7 +128,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'chest',
     name: 'CHEST',
-    icon: '💪',
     color: 'bg-gradient-to-r from-blue-600 to-cyan-500',
     description: 'Chest strength & size',
     exercises: [
@@ -151,7 +140,6 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'shoulders',
     name: 'SHOULDERS',
-    icon: '💪',
     color: 'bg-gradient-to-r from-yellow-500 to-orange-500',
     description: 'Shoulder development',
     exercises: [
@@ -211,12 +199,9 @@ const WorkoutCategories = () => {
           >
             {/* Category Header */}
             <div className={`${category.color} p-4 text-white`}>
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-lg font-bold">{category.name}</h3>
-                  <p className="text-sm opacity-90">{category.description}</p>
-                </div>
-                <span className="text-2xl">{category.icon}</span>
+              <div>
+                <h3 className="text-lg font-bold">{category.name}</h3>
+                <p className="text-sm opacity-90">{category.description}</p>
               </div>
             </div>
 
@@ -254,13 +239,11 @@ const WorkoutCategories = () => {
         <div className="grid grid-cols-2 gap-3">
           <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
             <div className="text-center">
-              <div className="text-xl mb-1">💪</div>
               <h4 className="font-semibold text-gray-900 text-sm">Upper Body</h4>
             </div>
           </button>
           <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
             <div className="text-center">
-              <div className="text-xl mb-1">🦵</div>
               <h4 className="font-semibold text-gray-900 text-sm">Lower Body</h4>
             </div>
           </button>

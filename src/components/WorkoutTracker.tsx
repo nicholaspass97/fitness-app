@@ -72,7 +72,9 @@ const WorkoutTracker = ({ workouts, onDeleteWorkout }: WorkoutTrackerProps) => {
     return (
       <div className="text-center py-8">
         <div className="w-16 h-16 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-          <span className="text-2xl">💪</span>
+          <svg className="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
         </div>
         <h3 className="text-lg font-bold text-gray-900 mb-2">No workouts yet</h3>
         <p className="text-gray-600 mb-4">Start your fitness journey today!</p>
@@ -167,7 +169,7 @@ const WorkoutTracker = ({ workouts, onDeleteWorkout }: WorkoutTrackerProps) => {
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center space-x-3">
                 <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${getWorkoutTypeColor(workout.type)}`}>
-                  <span className="text-sm">💪</span>
+                  <span className="text-xs font-medium">W</span>
                 </div>
                 <div>
                   <h4 className="font-semibold text-gray-900">{workout.type}</h4>
