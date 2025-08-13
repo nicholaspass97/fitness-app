@@ -18,13 +18,17 @@ const WorkoutTracker = ({ workouts, onDeleteWorkout }: WorkoutTrackerProps) => {
   })
 
   useEffect(() => {
-    let interval: NodeJS.Timeout
+    let interval: number | undefined
     if (isTimerRunning) {
-      interval = setInterval(() => {
+      interval = window.setInterval(() => {
         setSessionTimer(prev => prev + 1)
       }, 1000)
     }
-    return () => clearInterval(interval)
+    return () => {
+      if (interval) {
+        clearInterval(interval)
+      }
+    }
   }, [isTimerRunning])
 
   const formatTime = (seconds: number) => {
