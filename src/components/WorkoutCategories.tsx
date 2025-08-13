@@ -6,6 +6,7 @@ interface WorkoutCategory {
   icon: string
   color: string
   exercises: Exercise[]
+  description: string
 }
 
 interface Exercise {
@@ -19,8 +20,9 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'abs-circuit',
     name: 'ABS CIRCUIT',
-    icon: '💪',
-    color: 'bg-gradient-to-r from-purple-500 to-pink-500',
+    icon: '🔥',
+    color: 'bg-gradient-to-r from-orange-500 to-red-500',
+    description: 'Core strength and definition',
     exercises: [
       { name: 'In & Outs', sets: '3', reps: '20 reps' },
       { name: 'Russian Twists', sets: '3', reps: '30 reps' },
@@ -33,8 +35,9 @@ const workoutCategories: WorkoutCategory[] = [
   {
     id: 'abs-circuit-2',
     name: 'ABS CIRCUIT 2',
-    icon: '🔥',
-    color: 'bg-gradient-to-r from-orange-500 to-red-500',
+    icon: '💪',
+    color: 'bg-gradient-to-r from-purple-500 to-pink-500',
+    description: 'Advanced core training',
     exercises: [
       { name: 'Toe Touches (Weighted)', sets: '3', reps: '20-28 reps' },
       { name: 'Russian Twists', sets: '3', reps: '30 reps' },
@@ -43,9 +46,10 @@ const workoutCategories: WorkoutCategory[] = [
   },
   {
     id: 'leg-combo',
-    name: 'LEG COMBO EXERCISES',
+    name: 'LEG COMBO',
     icon: '🦵',
     color: 'bg-gradient-to-r from-green-500 to-teal-500',
+    description: 'Lower body power',
     exercises: [
       { name: 'Squats', sets: '3', reps: '12-15 reps' },
       { name: 'Leg Press', sets: '3', reps: '12-15 reps' }
@@ -56,6 +60,7 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'HAMSTRINGS',
     icon: '🏋️',
     color: 'bg-gradient-to-r from-blue-500 to-indigo-500',
+    description: 'Posterior chain strength',
     exercises: [
       { name: 'RDLs/Deadlifts', sets: '3', reps: '8-12 reps' },
       { name: 'Prone Leg Curls', sets: '3', reps: '12-15 reps' },
@@ -67,6 +72,7 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'GLUTES',
     icon: '🍑',
     color: 'bg-gradient-to-r from-pink-500 to-rose-500',
+    description: 'Glute activation & strength',
     exercises: [
       { name: 'Bulgarian Split Lunges', sets: '3', reps: '10-12 each leg', notes: 'Also targets quads' },
       { name: 'Adduction/Abduction', sets: '3', reps: '15-20 reps' },
@@ -79,6 +85,7 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'QUADS',
     icon: '💪',
     color: 'bg-gradient-to-r from-emerald-500 to-green-500',
+    description: 'Quadriceps development',
     exercises: [
       { name: 'Step Back Lunges', sets: '3', reps: '10-12 each leg' },
       { name: 'Squats w/ Dumbbell', sets: '3', reps: '12-15 reps' },
@@ -87,11 +94,12 @@ const workoutCategories: WorkoutCategory[] = [
   },
   {
     id: 'back',
-    name: 'BACK EXERCISES',
+    name: 'BACK',
     icon: '🏋️‍♂️',
     color: 'bg-gradient-to-r from-slate-600 to-gray-700',
+    description: 'Back strength & posture',
     exercises: [
-      { name: 'Pull Downs (Standing/Sitting)', sets: '3', reps: '10-12 reps' },
+      { name: 'Pull Downs', sets: '3', reps: '10-12 reps' },
       { name: 'Assisted Pull Ups', sets: '3', reps: '8-10 reps' },
       { name: 'Face Pulls', sets: '3', reps: '12-15 reps' },
       { name: 'Seated Rows', sets: '3', reps: '10-12 reps' },
@@ -100,14 +108,15 @@ const workoutCategories: WorkoutCategory[] = [
   },
   {
     id: 'biceps',
-    name: 'BICEP EXERCISES',
+    name: 'BICEPS',
     icon: '💪',
     color: 'bg-gradient-to-r from-red-500 to-pink-500',
+    description: 'Arm strength & definition',
     exercises: [
-      { name: 'Bicep Curls/Holds (Dumbbells)', sets: '3', reps: '10-12 reps' },
-      { name: 'Hammer Curls (Front of Chest)', sets: '3', reps: '10-12 each arm' },
-      { name: 'Rows (Machine or Dumbbell)', sets: '3', reps: '10-12 reps' },
-      { name: 'Preacher Curls (Machine)', sets: '3', reps: '10-12 reps' },
+      { name: 'Bicep Curls/Holds', sets: '3', reps: '10-12 reps' },
+      { name: 'Hammer Curls', sets: '3', reps: '10-12 each arm' },
+      { name: 'Rows', sets: '3', reps: '10-12 reps' },
+      { name: 'Preacher Curls', sets: '3', reps: '10-12 reps' },
       { name: 'Cable Curls', sets: '3', reps: '10-12 reps' }
     ]
   },
@@ -116,11 +125,12 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'TRICEPS',
     icon: '💪',
     color: 'bg-gradient-to-r from-purple-600 to-indigo-600',
+    description: 'Tricep development',
     exercises: [
       { name: 'Rope Pushdown', sets: '3', reps: '12-15 reps' },
       { name: 'Overhead Rope Extension', sets: '3', reps: '12-15 reps' },
-      { name: 'Tricep Dumbbell Kickbacks', sets: '3', reps: '12-15 each arm' },
-      { name: 'Overhead Dips (Dumbbells)', sets: '3', reps: '10-12 reps' },
+      { name: 'Tricep Kickbacks', sets: '3', reps: '12-15 each arm' },
+      { name: 'Overhead Dips', sets: '3', reps: '10-12 reps' },
       { name: 'Assisted Tricep Dips', sets: '3', reps: '8-10 reps' },
       { name: 'Skull Crushers', sets: '3', reps: '10-12 reps' }
     ]
@@ -130,9 +140,9 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'CHEST',
     icon: '💪',
     color: 'bg-gradient-to-r from-blue-600 to-cyan-500',
+    description: 'Chest strength & size',
     exercises: [
-      { name: 'Standing Cable Fly', sets: '3', reps: '12-15 reps' },
-      { name: 'Sitting Fly', sets: '3', reps: '12-15 reps' },
+      { name: 'Cable Fly', sets: '3', reps: '12-15 reps' },
       { name: 'Bench Press', sets: '3', reps: '8-12 reps' },
       { name: 'Pec Flys', sets: '3', reps: '12-15 reps' },
       { name: 'Incline Bench Press', sets: '3', reps: '8-12 reps' }
@@ -143,9 +153,10 @@ const workoutCategories: WorkoutCategory[] = [
     name: 'SHOULDERS',
     icon: '💪',
     color: 'bg-gradient-to-r from-yellow-500 to-orange-500',
+    description: 'Shoulder development',
     exercises: [
-      { name: 'Overhead Shoulder Press (Dumbbell)', sets: '3', reps: '8-12 reps' },
-      { name: 'Lateral Shoulder Dumbbell Raises', sets: '3', reps: '12-15 reps' }
+      { name: 'Overhead Shoulder Press', sets: '3', reps: '8-12 reps' },
+      { name: 'Lateral Raises', sets: '3', reps: '12-15 reps' }
     ]
   }
 ]
@@ -162,21 +173,24 @@ const WorkoutCategories = () => {
   )
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="text-center space-y-2">
-        <h1 className="text-3xl font-bold text-gray-900">Workout Library</h1>
-        <p className="text-gray-600">Choose your workout category and get started</p>
+    <div className="space-y-4">
+      {/* Motivational Card */}
+      <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-6 text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
+        <div className="relative z-10">
+          <h2 className="text-2xl font-bold mb-2">Muss ned schmecke</h2>
+          <p className="text-lg opacity-90">muss wirke</p>
+        </div>
       </div>
 
       {/* Search Bar */}
       <div className="relative">
         <input
           type="text"
-          placeholder="Search workouts or exercises..."
+          placeholder="Search workouts..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 pl-10 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 pl-10 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
         />
         <svg
           className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -188,33 +202,29 @@ const WorkoutCategories = () => {
         </svg>
       </div>
 
-      {/* Categories Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* Categories */}
+      <div className="space-y-4">
         {filteredCategories.map((category) => (
           <div
             key={category.id}
-            className={`relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1 ${
-              selectedCategory === category.id ? 'ring-4 ring-blue-500' : ''
-            }`}
-            onClick={() => setSelectedCategory(selectedCategory === category.id ? null : category.id)}
+            className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
           >
             {/* Category Header */}
-            <div className={`${category.color} p-6 text-white`}>
+            <div className={`${category.color} p-4 text-white`}>
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-lg font-bold">{category.name}</h3>
-                  <p className="text-sm opacity-90">{category.exercises.length} exercises</p>
+                  <p className="text-sm opacity-90">{category.description}</p>
                 </div>
                 <span className="text-2xl">{category.icon}</span>
               </div>
             </div>
 
             {/* Exercises List */}
-            <div className="bg-white p-6">
+            <div className="p-4">
               <div className="space-y-3">
                 {category.exercises.map((exercise, index) => (
-                  <div key={index} className="flex items-start space-x-3">
-                    <div className="flex-shrink-0 w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">{exercise.name}</p>
                       <p className="text-sm text-gray-600">
@@ -224,42 +234,34 @@ const WorkoutCategories = () => {
                         )}
                       </p>
                     </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-xs text-gray-500">{category.exercises.length} exercises</span>
+                      <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium py-2 px-3 rounded-lg transition-colors duration-200">
+                        Start
+                      </button>
+                    </div>
                   </div>
                 ))}
               </div>
-
-              {/* Action Button */}
-              <button className="w-full mt-4 bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200">
-                Start Workout
-              </button>
             </div>
           </div>
         ))}
       </div>
 
       {/* Quick Start Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Quick Start Workouts</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4">
+        <h3 className="text-lg font-bold text-gray-900 mb-3">Quick Start</h3>
+        <div className="grid grid-cols-2 gap-3">
           <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
             <div className="text-center">
-              <div className="text-2xl mb-2">💪</div>
-              <h4 className="font-semibold text-gray-900">Upper Body</h4>
-              <p className="text-sm text-gray-600">Chest, Back, Shoulders</p>
+              <div className="text-xl mb-1">💪</div>
+              <h4 className="font-semibold text-gray-900 text-sm">Upper Body</h4>
             </div>
           </button>
           <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
             <div className="text-center">
-              <div className="text-2xl mb-2">🦵</div>
-              <h4 className="font-semibold text-gray-900">Lower Body</h4>
-              <p className="text-sm text-gray-600">Legs, Glutes, Core</p>
-            </div>
-          </button>
-          <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
-            <div className="text-center">
-              <div className="text-2xl mb-2">🔥</div>
-              <h4 className="font-semibold text-gray-900">Full Body</h4>
-              <p className="text-sm text-gray-600">Complete workout</p>
+              <div className="text-xl mb-1">🦵</div>
+              <h4 className="font-semibold text-gray-900 text-sm">Lower Body</h4>
             </div>
           </button>
         </div>

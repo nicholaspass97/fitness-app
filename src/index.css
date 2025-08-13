@@ -15,11 +15,11 @@
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 4px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-100;
+    @apply bg-transparent;
   }
 
   ::-webkit-scrollbar-thumb {
@@ -33,19 +33,19 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-xl transition-colors duration-200;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-xl transition-colors duration-200;
   }
   
   .card {
-    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+    @apply bg-white rounded-2xl shadow-sm border border-gray-200 p-4;
   }
   
   .input-field {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
   }
 
   /* Custom animations */
@@ -86,6 +86,11 @@
     transform: translateY(-2px);
   }
 
+  /* Mobile-first design */
+  .mobile-container {
+    @apply max-w-md mx-auto px-4;
+  }
+
   /* Gradient backgrounds */
   .gradient-bg {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -93,5 +98,18 @@
 
   .gradient-bg-alt {
     background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  /* Social media inspired elements */
+  .social-card {
+    @apply bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden;
+  }
+
+  .interaction-bar {
+    @apply flex items-center justify-between p-3 border-t border-gray-100;
+  }
+
+  .engagement-icon {
+    @apply flex items-center space-x-1 text-gray-600 hover:text-red-500 transition-colors duration-200;
   }
 }

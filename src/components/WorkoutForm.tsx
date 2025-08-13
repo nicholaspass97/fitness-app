@@ -45,9 +45,9 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div className="flex items-center justify-between border-b border-gray-200 pb-4">
-        <h2 className="text-2xl font-bold text-gray-900">Add New Workout</h2>
+        <h2 className="text-xl font-bold text-gray-900">Add New Workout</h2>
         <button
           type="button"
           onClick={onCancel}
@@ -60,7 +60,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
       </div>
 
       {/* Basic Workout Info */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="space-y-4">
         <div>
           <label className="block text-sm font-semibold text-gray-700 mb-2">Date</label>
           <input
@@ -90,9 +90,9 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Duration (minutes)</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Duration (min)</label>
           <input
             type="number"
             value={formData.duration}
@@ -103,7 +103,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
           />
         </div>
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-2">Calories Burned</label>
+          <label className="block text-sm font-semibold text-gray-700 mb-2">Calories</label>
           <input
             type="number"
             value={formData.calories}
@@ -116,16 +116,16 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
       </div>
 
       {/* Exercises Section */}
-      <div className="border-t border-gray-200 pt-6">
-        <h3 className="text-xl font-bold text-gray-900 mb-4">Exercises</h3>
+      <div className="border-t border-gray-200 pt-4">
+        <h3 className="text-lg font-bold text-gray-900 mb-4">Exercises</h3>
         
         {/* Add Exercise Form */}
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl mb-6">
-          <h4 className="text-lg font-semibold text-gray-900 mb-4">Add Exercise</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+        <div className="bg-blue-50 p-4 rounded-xl mb-4">
+          <h4 className="text-sm font-semibold text-gray-900 mb-3">Add Exercise</h4>
+          <div className="space-y-3">
             <input
               type="text"
-              placeholder="Exercise name (e.g., Bench Press)"
+              placeholder="Exercise name"
               value={newExercise.name}
               onChange={(e) => setNewExercise(prev => ({ ...prev, name: e.target.value }))}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
@@ -156,23 +156,22 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
                 min="0"
               />
             </div>
+            <button
+              type="button"
+              onClick={handleAddExercise}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-200"
+            >
+              Add Exercise
+            </button>
           </div>
-          <button
-            type="button"
-            onClick={handleAddExercise}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-200 flex items-center justify-center space-x-2"
-          >
-            <span>➕</span>
-            <span>Add Exercise</span>
-          </button>
         </div>
 
         {/* Exercise List */}
         {formData.exercises.length > 0 && (
           <div className="space-y-3">
-            <h4 className="text-lg font-semibold text-gray-900">Added Exercises</h4>
+            <h4 className="text-sm font-semibold text-gray-900">Added Exercises</h4>
             {formData.exercises.map((exercise, index) => (
-              <div key={index} className="flex items-center justify-between bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+              <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-xl">
                 <div className="flex-1">
                   <p className="font-semibold text-gray-900">{exercise.name}</p>
                   <p className="text-sm text-gray-600">
@@ -196,7 +195,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
       </div>
 
       {/* Action Buttons */}
-      <div className="flex space-x-4 pt-6 border-t border-gray-200">
+      <div className="flex space-x-3 pt-4 border-t border-gray-200">
         <button
           type="submit"
           className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200"
