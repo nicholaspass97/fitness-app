@@ -67,7 +67,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
             type="date"
             value={formData.date}
             onChange={(e) => setFormData(prev => ({ ...prev, date: e.target.value }))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
             required
           />
         </div>
@@ -76,7 +76,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
           <select
             value={formData.type}
             onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
           >
             <option value="Strength">Strength Training</option>
             <option value="Cardio">Cardio</option>
@@ -97,7 +97,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
             type="number"
             value={formData.duration}
             onChange={(e) => setFormData(prev => ({ ...prev, duration: parseInt(e.target.value) || 0 }))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
             min="1"
             required
           />
@@ -108,7 +108,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
             type="number"
             value={formData.calories}
             onChange={(e) => setFormData(prev => ({ ...prev, calories: parseInt(e.target.value) || 0 }))}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
             min="0"
             required
           />
@@ -120,7 +120,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
         <h3 className="text-lg font-bold text-gray-900 mb-4">Exercises</h3>
         
         {/* Add Exercise Form */}
-        <div className="bg-blue-50 p-4 rounded-xl mb-4">
+        <div className="bg-blue-50/80 backdrop-blur-sm p-4 rounded-xl mb-4">
           <h4 className="text-sm font-semibold text-gray-900 mb-3">Add Exercise</h4>
           <div className="space-y-3">
             <input
@@ -128,7 +128,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
               placeholder="Exercise name"
               value={newExercise.name}
               onChange={(e) => setNewExercise(prev => ({ ...prev, name: e.target.value }))}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
             />
             <div className="grid grid-cols-3 gap-2">
               <input
@@ -136,7 +136,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
                 placeholder="Sets"
                 value={newExercise.sets}
                 onChange={(e) => setNewExercise(prev => ({ ...prev, sets: parseInt(e.target.value) || 0 }))}
-                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
                 min="1"
               />
               <input
@@ -144,7 +144,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
                 placeholder="Reps"
                 value={newExercise.reps}
                 onChange={(e) => setNewExercise(prev => ({ ...prev, reps: parseInt(e.target.value) || 0 }))}
-                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
                 min="1"
               />
               <input
@@ -152,14 +152,14 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
                 placeholder="Weight (kg)"
                 value={newExercise.weight}
                 onChange={(e) => setNewExercise(prev => ({ ...prev, weight: parseInt(e.target.value) || 0 }))}
-                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full px-3 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-white/90 backdrop-blur-sm"
                 min="0"
               />
             </div>
             <button
               type="button"
               onClick={handleAddExercise}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-200"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-colors duration-200 shadow-lg"
             >
               Add Exercise
             </button>
@@ -171,7 +171,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
           <div className="space-y-3">
             <h4 className="text-sm font-semibold text-gray-900">Added Exercises</h4>
             {formData.exercises.map((exercise, index) => (
-              <div key={index} className="flex items-center justify-between bg-gray-50 p-3 rounded-xl">
+              <div key={index} className="flex items-center justify-between bg-gray-50/80 backdrop-blur-sm p-3 rounded-xl">
                 <div className="flex-1">
                   <p className="font-semibold text-gray-900">{exercise.name}</p>
                   <p className="text-sm text-gray-600">
@@ -198,7 +198,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
       <div className="flex space-x-3 pt-4 border-t border-gray-200">
         <button
           type="submit"
-          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200"
+          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl transition-colors duration-200 shadow-lg"
         >
           Save Workout
         </button>

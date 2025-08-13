@@ -163,7 +163,7 @@ const WorkoutCategories = () => {
   return (
     <div className="space-y-4">
       {/* Motivational Card */}
-      <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-6 text-white relative overflow-hidden">
+      <div className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-2xl p-6 text-white relative overflow-hidden shadow-lg">
         <div className="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -translate-y-16 translate-x-16"></div>
         <div className="relative z-10">
           <h2 className="text-2xl font-bold mb-2">Muss ned schmecke</h2>
@@ -178,7 +178,7 @@ const WorkoutCategories = () => {
           placeholder="Search workouts..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="w-full px-4 py-3 pl-10 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className="w-full px-4 py-3 pl-10 bg-white/90 backdrop-blur-sm border border-white/20 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent shadow-lg"
         />
         <svg
           className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"
@@ -195,7 +195,7 @@ const WorkoutCategories = () => {
         {filteredCategories.map((category) => (
           <div
             key={category.id}
-            className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden"
+            className="glass-card overflow-hidden shadow-lg"
           >
             {/* Category Header */}
             <div className={`${category.color} p-4 text-white`}>
@@ -209,7 +209,7 @@ const WorkoutCategories = () => {
             <div className="p-4">
               <div className="space-y-3">
                 {category.exercises.map((exercise, index) => (
-                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                  <div key={index} className="flex items-center justify-between p-3 bg-gray-50/80 backdrop-blur-sm rounded-xl">
                     <div className="flex-1">
                       <p className="font-medium text-gray-900">{exercise.name}</p>
                       <p className="text-sm text-gray-600">
@@ -234,15 +234,15 @@ const WorkoutCategories = () => {
       </div>
 
       {/* Quick Start Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4">
+      <div className="bg-gradient-to-r from-blue-50/90 to-indigo-50/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-white/20">
         <h3 className="text-lg font-bold text-gray-900 mb-3">Quick Start</h3>
         <div className="grid grid-cols-2 gap-3">
-          <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
+          <button className="bg-white/90 hover:bg-white backdrop-blur-sm p-4 rounded-xl shadow-sm border border-white/20 transition-all duration-200">
             <div className="text-center">
               <h4 className="font-semibold text-gray-900 text-sm">Upper Body</h4>
             </div>
           </button>
-          <button className="bg-white hover:bg-gray-50 p-4 rounded-xl shadow-sm border border-gray-200 transition-all duration-200">
+          <button className="bg-white/90 hover:bg-white backdrop-blur-sm p-4 rounded-xl shadow-sm border border-white/20 transition-all duration-200">
             <div className="text-center">
               <h4 className="font-semibold text-gray-900 text-sm">Lower Body</h4>
             </div>
