@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Workout, Exercise } from '../App'
+import type { Workout, Exercise } from '../App'
 
 interface WorkoutFormProps {
   onSubmit: (workout: Omit<Workout, 'id'>) => void
@@ -169,7 +169,7 @@ const WorkoutForm = ({ onSubmit, onCancel }: WorkoutFormProps) => {
                   <p className="font-medium">{exercise.name}</p>
                   <p className="text-sm text-gray-500">
                     {exercise.sets} sets × {exercise.reps} reps
-                    {exercise.weight > 0 && ` @ ${exercise.weight}kg`}
+                    {exercise.weight && exercise.weight > 0 && ` @ ${exercise.weight}kg`}
                   </p>
                 </div>
                 <button

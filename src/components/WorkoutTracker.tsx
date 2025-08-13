@@ -1,4 +1,4 @@
-import { Workout } from '../App'
+import type { Workout } from '../App'
 
 interface WorkoutTrackerProps {
   workouts: Workout[]
